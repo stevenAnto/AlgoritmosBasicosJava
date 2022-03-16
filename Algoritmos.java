@@ -10,7 +10,7 @@ public class Algoritmos{
     String cadenaTexto;
     System.out.println("Ingrese la palbra");
     cadenaTexto=sc.nextLine();
-    System.out.println(largestWord(cadenaTexto));
+    System.out.println(longesWord(cadenaTexto));
     /*    System.out.println("Ingrese el numero de datos\n");
 	  num=sc.nextInt();
 
@@ -205,23 +205,48 @@ public class Algoritmos{
     int maxlength=0;
     char []arrayChar;
     arrayChar=p.toCharArray();
-      String word="";
-      mostrarChar(arrayChar);
-      System.out.println();
+    String word="";
+    mostrarChar(arrayChar);
+    System.out.println();
     for (int i =0;i< arrayChar.length;i++){
 
       word+=arrayChar[i];
       if (arrayChar[i]==' '||i==arrayChar.length-1){
-//	System.out.println("entro"+i+word);
+	//	System.out.println("entro"+i+word);
 	int length = word.length();
 	if(length>=maxlength){
 	  maxlength= length;
 	  maxword=word;
 	}
- 	word="";	
+	word="";	
       }
 
     }
+    return maxword;
+  }
+  public static String longesWord(String p){
+    String maxword="";
+    int maxlength=0;
+    char []arrayChar;
+    int i=0;
+    arrayChar=p.toCharArray();
+    mostrarChar(arrayChar);
+    System.out.println();
+    while(i<arrayChar.length){
+      String word="";
+      int length=0;
+      while(arrayChar[i]!=' ' && i<arrayChar.length){
+	length++;
+	word+=arrayChar[i];
+	i++;
+      }
+      if(length>maxlength){
+	maxlength=length;
+	maxword=word;
+      }
+      i++;
+    }
+
     return maxword;
   }
 }
