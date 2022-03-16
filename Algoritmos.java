@@ -1,0 +1,227 @@
+
+import java.util.*;
+
+public class Algoritmos{
+  static Scanner sc= new Scanner(System.in);
+  public static void main(String []argumentos){
+    //int []listaNumeros= {1,2,3,5,6,7,8,10,12,13,15,16,18,19,20,22};
+    int buscar;
+    int num;
+    String cadenaTexto;
+    System.out.println("Ingrese la palbra");
+    cadenaTexto=sc.nextLine();
+    System.out.println(largestWord(cadenaTexto));
+    /*    System.out.println("Ingrese el numero de datos\n");
+	  num=sc.nextInt();
+
+
+	  int listaNum[]=pedirDatos(num);
+
+	  System.out.println("Este es su listaa inicial\n");
+	  mostrar(listaNum);
+	  mostrar(insertionRight(7,listaNum));*/
+    //isPalindromo(listaNum);
+    //System.out.println("IsPalindromo"+isPalindromo(listaNum));
+    //    System.out.println("potencia de "+ potencia(2,3));
+
+    //		bubleSort(listaNum);
+    //insertionSort(listaNum);
+    //System.out.println("esta es la mayor diferencia"+mayorDiferencia(listaNum)+"\n");
+    //mostrar(contadorDuplicados(listaNum));
+    //
+    //System.out.println("este es el ultimo numero par"+ultimoEntero(listaNum));
+
+    //  System.out.println("\nordenado\n");
+    // mostrar(listaNum);
+    System.out.println();
+    //    System.out.println("ingrese el numero para a buscar\n");
+    // buscar=sc.nextInt();
+    // System.out.println(busquedaBinaria(buscar,listaNum));
+
+
+  }public static int potencia(int x, int n){
+    int power=1;
+    for(int i=0; i<n;i++){
+      power=power*x;
+    }
+    return power;
+  }
+  public static boolean isPalindromo(int []a){
+    int k=0; //contador de iteraciones
+    for(int i=0;i<Math.floor(a.length/2);i++){
+      if (a[i]!=a[a.length-1-i]) return false;
+      k++;
+      System.out.println("entro"+k);
+    }
+    System.out.println("contador"+k);
+    return true;
+  }
+  public static int ultimoEntero(int []a){
+    int k=0; //contador
+    int ultimoPar=0;
+    for (int i=0;i<a.length;i++){
+      if(a[i]%2==0)ultimoPar=a[i];
+      k++;
+    }
+    if(k==0)return ultimoPar;
+    else return k;
+
+  }
+  public static int [] contadorDuplicados(int []sortA){ //Se puede mejorar haciendo un ArrayLista
+    int []listaDuplicados=new int [sortA.length];
+    int k=0; //contador de duplicados
+    int j=1;
+    while (j<=sortA.length-1){
+
+      if(sortA[j]==sortA[j-1]){
+	listaDuplicados[k]=sortA[j];
+	k++;
+	while (j<=sortA.length-1&&sortA[j]==listaDuplicados[k]){
+	  j++;
+	}
+
+      }
+      j++;
+    }return listaDuplicados;
+  }
+  public static int mayorDiferencia(int [] a){
+    int diferencia,mayor=0;
+    System.out.println("A"+(3-4));
+    for(int i=1; i <a.length; i++){
+      diferencia=a[i]-a[i-1];
+      System.out.println("dif"+a[i]+a[i-1]+diferencia);
+      if (diferencia>mayor)mayor=diferencia;
+
+    }return mayor;
+
+
+  }
+  public static double  busquedaBinaria(int x,int []listaNumeros){//Dicho codigo se hizo un poco diferente, pero al parece si devuelve el resultado espero.
+    int i,j;
+    int local=-1;
+    i=0;
+    j=listaNumeros.length;
+    int  m;
+    while(i<j){
+      m=(int) Math.floor((i+j)/2);
+      if(x>listaNumeros[m])i=m+1; 
+      else j=m;
+    }
+    if(x==listaNumeros[i]){
+      local=i;
+      return local;
+    }else{
+      return -1;
+    }
+
+
+  }
+  public static int [] pedirDatos(int num){
+    int []listaNum=new int[num];
+    int i=0;
+    int q;
+    do{
+      System.out.print("Ingrese un dato");
+      q=sc.nextInt();
+      listaNum[i]=q;
+      i++;
+    }while(i<num);
+    return listaNum;
+
+
+  }public static int []bubleSort(int []lista){
+    for(int i=0; i<lista.length-1;i++){
+      for(int j=0; j<lista.length-1-i;j++){
+	if(lista[j]>lista[j+1]){
+	  int provi=lista[j];
+	  lista[j]=lista[j+1];
+	  lista[j+1]=provi;
+	}	
+      }
+    }
+    return lista;
+
+
+  }public static void intercambiar(int a, int b){
+    int c;
+    c=a;
+    a=b;
+    b=c;
+
+  }
+  public static void mostrar(int []lista){
+    for(int i=0; i<lista.length;i++){
+      System.out.print(lista[i]+",");
+    }
+
+  }
+  public static void mostrarChar(char []lista){
+    for(int i=0; i<lista.length;i++){
+      System.out.print(lista[i]+",");
+    }
+  }
+  public static int []insertionSort(int []disArray){
+    for(int i=1; i<disArray.length;i++){
+      int j=0;
+      while(disArray[i]>disArray[j]){
+	j++;
+      }
+      int m=disArray[i];
+
+      for(int k=0;k<i-j;k++){
+	disArray[i-k]=disArray[i-k-1];
+
+      }
+      disArray[j]=m;
+    }
+    return disArray;
+  }
+  public static int []insertionRight(int x,int []listaOrdenada){
+    int []nuevaLista = new int[listaOrdenada.length+1];
+    for(int i=0; i<listaOrdenada.length;i++){
+      if(x<=listaOrdenada[i]){
+	nuevaLista[i]=x;
+	for (int k=i;k<listaOrdenada.length;k++){
+	  nuevaLista[k+1]=listaOrdenada[k];
+	}i=listaOrdenada.length;
+      }else nuevaLista[i]=listaOrdenada[i];
+    }
+    return nuevaLista;
+  }
+  public static int []insertionRight2(int x,int []listaOrdenada){
+    int []nuevaLista = new int[listaOrdenada.length+1];
+    for(int i=0; i<listaOrdenada.length;i++){
+      if(x<=listaOrdenada[i]){
+	nuevaLista[i]=x;
+	for (int k=i;k<listaOrdenada.length;k++){
+	  nuevaLista[k+1]=listaOrdenada[k];
+	}i=listaOrdenada.length;
+      }else nuevaLista[i]=listaOrdenada[i];
+    }
+    return nuevaLista;
+  }
+  public static String largestWord(String p){
+    String maxword="";
+    int maxlength=0;
+    char []arrayChar;
+    arrayChar=p.toCharArray();
+      String word="";
+      mostrarChar(arrayChar);
+      System.out.println();
+    for (int i =0;i< arrayChar.length;i++){
+
+      word+=arrayChar[i];
+      if (arrayChar[i]==' '||i==arrayChar.length-1){
+//	System.out.println("entro"+i+word);
+	int length = word.length();
+	if(length>=maxlength){
+	  maxlength= length;
+	  maxword=word;
+	}
+ 	word="";	
+      }
+
+    }
+    return maxword;
+  }
+}
