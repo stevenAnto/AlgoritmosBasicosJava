@@ -19,6 +19,7 @@ public class Algoritmos2{
 
 	  System.out.println("Este es su listaa inicial\n");
 	  mostrar(listaNum);
+	  System.out.println("Esta es la moda"+valorModa(listaNum));
 	 // mostrar(insertionRight(7,listaNum));
     //isPalindromo(listaNum);
     //System.out.println("IsPalindromo"+isPalindromo(listaNum));
@@ -47,7 +48,7 @@ public class Algoritmos2{
     }
     return power;
   }
-  public static double  busquedaTernaria(int x,int []listaNumeros){//
+  public static int  busquedaTernaria(int x,int []listaNumeros){//
     int i,j;
     int local=-1;
     i=0;
@@ -76,6 +77,23 @@ public class Algoritmos2{
       local =-1;
     }
     return local;
+  }
+  public static int valorModa(int []a){
+    int contadorModos=0;
+    int i=0;
+    int moda=0;
+    while(i<a.length){
+      int num=a[i];
+      int contador=0;
+      while(i<a.length&& a[i]==num){
+	contador++;
+	i++;
+      }
+      if (contador>contadorModos){
+	contadorModos=contador;
+	moda=num;
+      }
+    }return moda;
   }
   public static boolean isPalindromo(int []a){
     int k=0; //contador de iteraciones
