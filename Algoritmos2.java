@@ -7,20 +7,22 @@ public class Algoritmos2{
     //int []listaNumeros= {1,2,3,5,6,7,8,10,12,13,15,16,18,19,20,22};
     int buscar;
     int num;
-   /* String cadenaTexto;
-    System.out.println("Ingrese la palbra");
-    cadenaTexto=sc.nextLine();*/
+    /* String cadenaTexto;
+       System.out.println("Ingrese la palbra");
+       cadenaTexto=sc.nextLine();*/
     //System.out.println(longesWord(cadenaTexto));
-        System.out.println("Ingrese el numero de datos\n");
-	  num=sc.nextInt();
+    System.out.println("Ingrese el numero de datos\n");
+    num=sc.nextInt();
 
 
-	  int listaNum[]=pedirDatos(num);
+    int listaNum[]=pedirDatos(num);
 
-	  System.out.println("Este es su listaa inicial\n");
-	  mostrar(listaNum);
-	  System.out.println("Esta es la moda"+valorModa(listaNum));
-	 // mostrar(insertionRight(7,listaNum));
+    System.out.println("Este es su listaa inicial\n");
+    mostrar(listaNum);
+    
+    System.out.println("Este es el primer termino repetido"+repeatFirst(listaNum));
+    System.out.println("Esta es la moda"+valorModa(listaNum));
+    // mostrar(insertionRight(7,listaNum));
     //isPalindromo(listaNum);
     //System.out.println("IsPalindromo"+isPalindromo(listaNum));
     //    System.out.println("potencia de "+ potencia(2,3));
@@ -32,12 +34,12 @@ public class Algoritmos2{
     //
     //System.out.println("este es el ultimo numero par"+ultimoEntero(listaNum));
 
-      System.out.println("\nordenado\n");
-     mostrar(listaNum);
+    System.out.println("\nordenado\n");
+    mostrar(listaNum);
     System.out.println();
-        System.out.println("ingrese el numero para a buscar\n");
-     buscar=sc.nextInt();
-     System.out.println(busquedaTernaria(buscar,listaNum));
+    System.out.println("ingrese el numero para a buscar\n");
+    buscar=sc.nextInt();
+    System.out.println(busquedaTernaria(buscar,listaNum));
     // System.out.println(busquedaBinaria(buscar,listaNum));
 
 
@@ -47,6 +49,19 @@ public class Algoritmos2{
       power=power*x;
     }
     return power;
+  }
+  public static int repeatFirst(int []a){
+    int local=0;
+    int i=1;
+    while(i<a.length &&local==0){
+      int j=0;
+      while(j<i && local==0){
+	System.out.println("entro");
+	if(a[i]==a[j])local=i;
+	j++;
+      }i++;
+    }
+    return local;
   }
   public static int  busquedaTernaria(int x,int []listaNumeros){//
     int i,j;
