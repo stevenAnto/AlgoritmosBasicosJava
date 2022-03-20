@@ -29,11 +29,14 @@ public class Algoritmos2{
     //    System.out.println("potencia de "+ potencia(2,3));
 
     //		bubleSort(listaNum);
-    bestBubleSort(listaNum);
+    /*  bestBubleSort(listaNum);
 
-    System.out.println("Lista ordenado MEJORADO");
+	System.out.println("Lista ordenado MEJORADO");
+	mostrar(listaNum);
+	insertionSort(listaNum);*/
+    seleccion(listaNum);
+    System.out.println("Lista ordenado por seleccion");
     mostrar(listaNum);
-    insertionSort(listaNum);
     //System.out.println("esta es la mayor diferencia"+mayorDiferencia(listaNum)+"\n");
     //mostrar(contadorDuplicados(listaNum));
     //
@@ -49,9 +52,26 @@ public class Algoritmos2{
 
 
   }
+  public static int []seleccion(int []lista){
+    for (int i = lista.length;i>0;i--){
+      for (int j = lista.length-1;j>lista.length-i;j--){
+	  System.out.println("j"+lista[j]);
+	  System.out.println("j-1"+lista[j-1]);
+	if(lista[j]<lista[j-1]){
+
+	  int m= lista[j];
+	  lista[j]=lista[j-1];
+	  lista[j-1]=m;
+	}
+	mostrar(lista);
+      }
+    }
+    return lista;
+  }
   public static int []bestBubleSort(int []lista){
     boolean completado=false;
-    while(i<lista.length && completado==fase){
+    int i=0;
+    while(i<lista.length && completado==false){
       for(int j=0; j<lista.length-1-i;j++){
 	completado=true;
 	if(lista[j]>lista[j+1]){
@@ -87,7 +107,7 @@ public class Algoritmos2{
     while(i<a.length &&local==0){
       int j=0;
       while(j<i && local==0){
-	System.out.println("entro");
+	//System.out.println("entro");
 	if(a[i]==a[j])local=i;
 	j++;
       }i++;
