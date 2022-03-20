@@ -29,6 +29,10 @@ public class Algoritmos2{
     //    System.out.println("potencia de "+ potencia(2,3));
 
     //		bubleSort(listaNum);
+    bestBubleSort(listaNum);
+
+    System.out.println("Lista ordenado MEJORADO");
+    mostrar(listaNum);
     insertionSort(listaNum);
     //System.out.println("esta es la mayor diferencia"+mayorDiferencia(listaNum)+"\n");
     //mostrar(contadorDuplicados(listaNum));
@@ -44,6 +48,21 @@ public class Algoritmos2{
     // System.out.println(busquedaBinaria(buscar,listaNum));
 
 
+  }
+  public static int []bestBubleSort(int []lista){
+    boolean completado=false;
+    for(int i=0; i<lista.length-1;i++){
+      for(int j=0; j<lista.length-1-i;j++){
+	completado=true;
+	if(lista[j]>lista[j+1]){
+	  completado=false;
+	  int provi=lista[j];
+	  lista[j]=lista[j+1];
+	  lista[j+1]=provi;
+	}	
+      }
+    }
+    return lista;
   }
   public static int ejercicio33(int []a){
     int local=0;
@@ -202,7 +221,8 @@ public class Algoritmos2{
     return listaNum;
 
 
-  }public static int []bubleSort(int []lista){
+  }
+  public static int []bubleSort(int []lista){
     for(int i=0; i<lista.length-1;i++){
       for(int j=0; j<lista.length-1-i;j++){
 	if(lista[j]>lista[j+1]){
@@ -213,9 +233,8 @@ public class Algoritmos2{
       }
     }
     return lista;
-
-
-  }public static void intercambiar(int a, int b){
+  }
+  public static void intercambiar(int a, int b){
     int c;
     c=a;
     a=b;
