@@ -51,7 +51,7 @@ public class Algoritmos2{
   }
   public static int []bestBubleSort(int []lista){
     boolean completado=false;
-    for(int i=0; i<lista.length-1;i++){
+    while(i<lista.length && completado==fase){
       for(int j=0; j<lista.length-1-i;j++){
 	completado=true;
 	if(lista[j]>lista[j+1]){
@@ -59,8 +59,9 @@ public class Algoritmos2{
 	  int provi=lista[j];
 	  lista[j]=lista[j+1];
 	  lista[j+1]=provi;
-	}	
+	}
       }
+
     }
     return lista;
   }
