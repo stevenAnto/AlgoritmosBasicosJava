@@ -19,7 +19,8 @@ public class Algoritmos2{
 
     System.out.println("Este es su listaa inicial\n");
     mostrar(listaNum);
-    
+    System.out.println("\nel primer decreciente"+ejercicio33(listaNum));
+
     System.out.println("Este es el primer termino repetido"+repeatFirst(listaNum));
     System.out.println("Esta es la moda"+valorModa(listaNum));
     // mostrar(insertionRight(7,listaNum));
@@ -43,7 +44,17 @@ public class Algoritmos2{
     // System.out.println(busquedaBinaria(buscar,listaNum));
 
 
-  }public static int potencia(int x, int n){
+  }
+  public static int ejercicio33(int []a){
+    int local=0;
+    int i =1;
+    while(i<a.length&local==0){
+      if(a[i]<a[i-1])local=i;
+      else{i++;}
+    }
+    return local;
+  }
+  public static int potencia(int x, int n){
     int power=1;
     for(int i=0; i<n;i++){
       power=power*x;
