@@ -19,10 +19,8 @@ public class Algoritmos2{
 
     System.out.println("Este es su listaa inicial\n");
     mostrar(listaNum);
-    System.out.println("\nel primer decreciente"+ejercicio33(listaNum));
-
-    System.out.println("Este es el primer termino repetido"+repeatFirst(listaNum));
-    System.out.println("Esta es la moda"+valorModa(listaNum));
+    //    System.out.println("Este es el primer termino repetido"+repeatFirst(listaNum));
+    //  System.out.println("Esta es la moda"+valorModa(listaNum));
     // mostrar(insertionRight(7,listaNum));
     //isPalindromo(listaNum);
     //System.out.println("IsPalindromo"+isPalindromo(listaNum));
@@ -34,36 +32,115 @@ public class Algoritmos2{
 	System.out.println("Lista ordenado MEJORADO");
 	mostrar(listaNum);
 	insertionSort(listaNum);*/
-    seleccion(listaNum);
-    System.out.println("Lista ordenado por seleccion");
+    //seleccion(listaNum);
+    insertionSort(listaNum);
+    //    System.out.println(busquedaTernaria(buscar,listaNum));
+
+    System.out.println("\n\nLista ordenado por seleccion/insercionBinaria");
     mostrar(listaNum);
+    System.out.println();
+    System.out.println("Ingrese el numero que desea buscar/ingresar Busqueda lineal");
+    int numBusca=sc.nextInt();
+    System.out.println("Se encontro el indice?"+indexSLineal(numBusca,listaNum));
+    System.out.println("Ingrese el numero que desea buscar/ingresar BusquedaBinaria");
+    numBusca=sc.nextInt();
+    System.out.println("Se encontro el indice?"+indexSBinaria(numBusca,listaNum));
+    //System.out.println("\nel primer decreciente"+ejercicio33(listaNum));
     //System.out.println("esta es la mayor diferencia"+mayorDiferencia(listaNum)+"\n");
     //mostrar(contadorDuplicados(listaNum));
     //
     //System.out.println("este es el ultimo numero par"+ultimoEntero(listaNum));
 
-    System.out.println("\nordenado\n");
-    mostrar(listaNum);
-    System.out.println();
-    System.out.println("ingrese el numero para a buscar\n");
-    buscar=sc.nextInt();
-    System.out.println(busquedaTernaria(buscar,listaNum));
+    /*    System.out.println("\nordenado\n");
+	  mostrar(listaNum);
+	  System.out.println();
+	  System.out.println("ingrese el numero para a buscar\n");*/
+    //buscar=sc.nextInt();
     // System.out.println(busquedaBinaria(buscar,listaNum));
 
 
   }
+  public static int[] ordenacionInsercionBinaria(int []a){//lista ordenada creciente
+    int i;
+    for (int j=1;j<a.length;j++){
+      int izquierda=1;
+      int derecha =j-1;
+      while (izquierda <derecha ){
+	int medio= (int)Math.floor((izquierda+derecha)/2);
+	if(a[j]>a[medio])izquierda=medio+1;
+	else{ derecha = medio;}
+      }
+      if(a[j]<a[izquierda])i=izquierda;
+      else{i=izquierda+1;}
+      int m= a[j];
+      for(int k=0; k<j-i;j++){
+	a[j-k]=a[j-k-1];
+      }
+      a[i]=m;
+    }
+    return a;
+  }
+  public static int []insertionSort(int []disArray){
+    for(int i=1; i<disArray.length;i++){
+      int j=0;
+      while(disArray[i]>disArray[j]){
+	j++;
+      }
+      int m=disArray[i];
+
+      for(int k=0;k<i-j;k++){
+	disArray[i-k]=disArray[i-k-1];
+
+      }
+      disArray[j]=m;
+    }
+    return disArray;
+  }
+  public static int indexSBinaria(int x,int []a){//lista ordenada creciente
+    int i,j;
+    int local=-1;
+    i=0;
+    j=a.length;
+    int  m;
+    while(i<j){
+      m=(int) Math.round((i+j)/2);
+      if(x>a[m])i=m+1; 
+      else j=m;
+      System.out.println("indice i"+i+ "indice j "+j);
+    }
+    if(i==a.length){          // problema de que en caso el indice sea del tamanio del arreglo
+      return i;
+    }else{
+      if(x<a[i]){
+	local=i;
+	return local;
+      }else{
+	return i++;
+      }
+    }
+  }
+  public static int indexSLineal(int x,int []a){//lista ordenada creciente
+    int i =0;
+    int local;
+    while(i<a.length && x>a[i]){
+      i++;
+    }
+    if(i<a.length)local =i;
+    else{local=a.length;}
+    return local;
+  }
   public static int []seleccion(int []lista){
     for (int i = lista.length;i>0;i--){
       for (int j = lista.length-1;j>lista.length-i;j--){
-	  System.out.println("j"+lista[j]);
-	  System.out.println("j-1"+lista[j-1]);
+	/*	  System.out.println("j"+lista[j]);
+		  System.out.println("j-1"+lista[j-1]);*/
 	if(lista[j]<lista[j-1]){
 
 	  int m= lista[j];
 	  lista[j]=lista[j-1];
 	  lista[j-1]=m;
 	}
-	mostrar(lista);
+	//mostrar(lista);
       }
     }
     return lista;
@@ -273,22 +350,6 @@ public class Algoritmos2{
       System.out.print(lista[i]+",");
     }
   }
-  public static int []insertionSort(int []disArray){
-    for(int i=1; i<disArray.length;i++){
-      int j=0;
-      while(disArray[i]>disArray[j]){
-	j++;
-      }
-      int m=disArray[i];
-
-      for(int k=0;k<i-j;k++){
-	disArray[i-k]=disArray[i-k-1];
-
-      }
-      disArray[j]=m;
-    }
-    return disArray;
-  }
   public static int []insertionRight(int x,int []listaOrdenada){
     int []nuevaLista = new int[listaOrdenada.length+1];
     for(int i=0; i<listaOrdenada.length;i++){
@@ -359,7 +420,16 @@ public class Algoritmos2{
       }
       i++;
     }
-
     return maxword;
+  }
+  public static int insertionLineal(int x,int []a){
+    int i =0;
+    int local;
+    while(i<a.length && x!=a[i]){
+      i++;
+    }
+    if(i<a.length)local =i;
+    else{local=a.length;}
+    return local;
   }
 }
