@@ -18,16 +18,16 @@ public class  NumerosPrimos{
       System.out.println(i+" "+(i%numModulo));
     }
   }
-  public static int isPrimo(int num){
+  public static ArrayList<Integer>  isPrimo(int num){
+    ArrayList<Integer> listaDivisores = new  ArrayList<Integer>();
     int contador=0;
     int divisor=-1;
     for (int i=2;i<num;i++){
       if(num%i==0){contador++;
-	divisor=i;}
+	listaDivisores.add(i);}
       
     }
-    if(contador==0)return contador;
-    else{return divisor;}
+    return listaDivisores;
   }
   public static void  cifradoCesar(){
     int imagen;
