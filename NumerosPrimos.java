@@ -5,8 +5,9 @@ public class  NumerosPrimos{
   public static void main(String []arg){
     System.out.println("ingrese su numero");
     int num=sc.nextInt();
-    System.out.println("es primo?"+isPrimo(num));
-    functionDispersion(num);
+    System.out.println(factoresPrimos(num));
+    //System.out.println("es primo?"+isPrimo(num));
+    //functionDispersion(num);
     //cifradoCesar();
 
 
@@ -18,17 +19,32 @@ public class  NumerosPrimos{
       System.out.println(i+" "+(i%numModulo));
     }
   }
-  public static ArrayList<Integer>  isPrimo(int num){
+  public static ArrayList<Integer>  factoresPrimos(int num){
     ArrayList<Integer> listaDivisores = new  ArrayList<Integer>();
     int contador=0;
     int divisor=-1;
     for (int i=2;i<num;i++){
       if(num%i==0){contador++;
-	listaDivisores.add(i);}
+	if(isPrimo(i))listaDivisores.add(i);
+	}
+
       
     }
     return listaDivisores;
   }
+  public static  boolean  isPrimo(int num){
+    boolean noIsPrimo=true;
+    int i=2;
+    while(i<num && noIsPrimo){
+      int evaluar= num%i;
+      if(evaluar==0)noIsPrimo=false;
+      System.out.println("contador"+i);
+      i++;
+    }
+    if(i==num) return true;
+    else {return false;}
+  }
+
   public static void  cifradoCesar(){
     int imagen;
     for (int i=1;i<=30;i++){
